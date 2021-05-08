@@ -20,6 +20,10 @@ Cookies or URL parameters ( for ex. like http://example.com/myPage?asd=lol&boo=n
 
 The solution is to store that data server side, give it an "id", and let the client only know (and pass back at every http request) that id. There you go, sessions implemented. Or you can use the client as a convenient remote storage, but you would encrypt the data and keep the secret server-side
 
+# What is Session
+
+Session is a temporary and interactive information interchange between two or more communicating devices. This is just a concept. You can use in-memory storage, database, or even file to implement session.
+
 # examples
 
 * express-session
