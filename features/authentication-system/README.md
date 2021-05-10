@@ -1,13 +1,10 @@
 # Why I chose to study authentication system? What is my problem and goal?
 
-Currently, my goal is to make my own blog web site. Because I hope to upload my post anywhere, I need authentication system so nobody except me is allowed to upload posts
+my goal was to make my own blog web site. Because I hope to upload my post anywhere, I needed authentication system so nobody except me is allowed to upload posts. I chose to use locally stored user/password JWT authentication system. However, there are plenty of authentication systems like OAUTH or LDAP user authentication, so I decided to make this directory as category directory. 
 
-# Tutorial I watched
+# Examples
 
-https://www.youtube.com/watch?v=F-sFp_AvHc8 by  Zach Gollwitzer
+* local/passport
 
-# prerequisite knowledges:
-
-Session, Cookie, cryptography
-
-Since the tutorial explains above three knowledges enough to implement authentication system, you can just watch the video.
+    * save username, hashed password to database 
+    * use session and cookie to keep authenticated users to access their own resources until they click logout
