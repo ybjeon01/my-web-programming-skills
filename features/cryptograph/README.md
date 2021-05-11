@@ -8,3 +8,9 @@ A authentication system tutorial explained about cryptograph and how to use node
 
     * encrypt plain text and decrypt code by using asymmetric encryption
     * people who has private key can only see the plain text
+
+* digital_signature/nodejs
+    
+    * read asynmmetic_encryption first before you read this code
+    * use hash function and asymmetic_encryption to identify that data is not modified by someone else who can monitor network
+    * Unlike usual data encryption, anyone who has public key can see plain data. Digital Signature is just for identification
