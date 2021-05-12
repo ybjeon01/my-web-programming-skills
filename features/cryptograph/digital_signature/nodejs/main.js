@@ -67,6 +67,11 @@ function hashMessage(message, algorithm) {
 function getDataWithSignature(message, algorithm, privateKey) {
     const hashValue = hashMessage(message, algorithm);
     const encryptedData = encryptWithPrivateKey(privateKey, hashValue);
+    // In this example, I encrypted only message, but algorithm.
+    // in practice, every plain data should be encrypted
+    // if the data contains header, then message and header should be hashed
+    // and encrypted. Otherwise, there is no way to validate the header so 
+    // hacker can modify the header part. 
     return {
         message,
         encryptedData,
@@ -110,12 +115,18 @@ console.log('hash algorithm: ' + hashAlgorithm);
 
 const dataWithSig = getDataWithSignature(plainText, hashAlgorithm, keyPair.privateKey);
 
-
-// make digital signature and make a form that 
+// In real practice, you should encode the encrypted data with base64url
+// if you include the data in HTTP header or body
+// default string encoding:
+// https://stackoverflow.com/questions/20224791/what-encodings-are-available-node-js
+// ex:
+// string = dataWithSig.encryptedData.toString('base64')
+// console.log(dataWithSig.encryptedData)
+// console.log(Buffer.from(string, 'base64'))
 console.log('data with signature: ');
 console.log(JSON.stringify(dataWithSig));
 
-
+console.log(dataWithSig.encryptedData)
 // assume that from here receiver got the data from sender
 // decrypt and print decrypted text
 const valid = validateDataWithSignature(dataWithSig, keyPair.publicKey);
