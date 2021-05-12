@@ -29,15 +29,29 @@ function readKeyPair(path) {
     }
 }
 
+// privateKey: private key of RSA algorithm
+// message: plain text or any unencrypted data
+// Unlike encrypting data, this function is for generating digial signature
+// the data encrytped by private key can be decrypted by public key that
+// every user should have
 function encryptWithPrivateKey(privateKey, message) {
     const bufferMessage = Buffer.from(message, 'utf8');
     return crypto.privateEncrypt(privateKey, bufferMessage)
 }
 
+// publicKey: public key of RSA algorithm
+// bufferedMessage: buffer object containing encrypted data
+// this function is for validating digital signature
+// this function can decrypted data that was encrypted by private key
 function decryptWithPublicKey(publicKey, bufferMessage) {
     return crypto.publicDecrypt(publicKey, bufferMessage);
 }
 
+// message: plain text or data you want to hash
+// algorithm: hash algorithm to use
+// trapdoor function
+// In this example, this function is used for generating digital signature
+// and signature validation
 function hashMessage(message, algorithm) {
     const hash = crypto.createHash(algorithm);
     hash.update(message);
@@ -46,6 +60,10 @@ function hashMessage(message, algorithm) {
     return hashValue;
 }
 
+// message: plain text
+// algorithm: hash algorithm to use
+// private key: private key of RSA algorithm
+// generate digital signature that can be validated by receiver
 function getDataWithSignature(message, algorithm, privateKey) {
     const hashValue = hashMessage(message, algorithm);
     const encryptedData = encryptWithPrivateKey(privateKey, hashValue);
@@ -56,6 +74,10 @@ function getDataWithSignature(message, algorithm, privateKey) {
     };
 }
 
+// data: data that contains plain text, hash value encrypted by private key,
+//       and hash algorithm used for the encrypted hash value
+// public key: RSA algorithm public key that will be used for decrypting the 
+//             encrypted hash value
 function validateDataWithSignature(data, publicKey) {
     const hashValue = hashMessage(data.message, data.algorithm);
     const decryptedHashValue = decryptWithPublicKey(publicKey, data.encryptedData);
@@ -63,6 +85,7 @@ function validateDataWithSignature(data, publicKey) {
     return hashValue === decryptedHashValue.toString()
 }
 
+// __main__ 
 let keyPair = undefined;
 const keyPath = {
     publicPath: 'id_rsa_pub.pem',
@@ -92,6 +115,8 @@ const dataWithSig = getDataWithSignature(plainText, hashAlgorithm, keyPair.priva
 console.log('data with signature: ');
 console.log(JSON.stringify(dataWithSig));
 
+
+// assume that from here receiver got the data from sender
 // decrypt and print decrypted text
 const valid = validateDataWithSignature(dataWithSig, keyPair.publicKey);
 console.log('valid: ' + valid);
