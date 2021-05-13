@@ -85,3 +85,41 @@ console.log(newHash)
 if (hash.endsWith(newHash)) {
     console.log('verified!')
 }
+
+// above methods manually check the signature. There is more convinient
+// way to sign and verify the signature using crypto module
+// However, there is eaiser way than just using crypto module. which is 
+// using jsonwebtoken module, you can find example in 
+// feature/cryptograph/jwt/jsonwebtoken
+
+const signatureFunction = crypto.createSign('RSA-SHA256')
+const verifyFunction = crypto.createVerify('RSA-SHA256')
+
+console.log()
+
+// sign header and content with private key and then return base64 encoded
+// signature
+signatureFunction.write(jwtParts[0] + '.' + jwtParts[1])
+signatureFunction.end() 
+const signatureBase64 = signatureFunction.sign(
+    keyPair.privateKey.toString('utf8'), 'base64'
+)
+
+// sign
+const signatureBase64Url = base64url.fromBase64(signatureBase64)
+
+// check the signature is really the same with Jwt signature given by jwt.io site
+console.log(jwtParts[2])
+console.log()
+console.log(signatureBase64Url)
+
+// verify
+verifyFunction.write(jwtParts[0] + '.' + jwtParts[1])
+verifyFunction.end()
+
+const signatureIsValid = verifyFunction.verify(
+    keyPair.publicKey.toString(), signatureBase64, 'base64'
+)
+
+console.log()
+console.log(signatureIsValid)
