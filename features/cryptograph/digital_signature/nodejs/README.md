@@ -28,6 +28,10 @@ Utilize this references afer wathcing tutorial
 
     * (digital certificate) https://en.wikipedia.org/wiki/Public_key_certificate
 
+* Hash is not text! It's binary
+    
+    * https://stackoverflow.com/questions/67504916/tried-to-verify-jwt-signature-by-myself-in-nodejs-to-understnad-internal-working
+
 # Notes:
 
 * Why hash the message before signing it with RSA?
