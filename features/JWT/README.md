@@ -34,3 +34,16 @@ in standard but you can add any key and values
 
 # examples
 
+* nodejs
+
+    * Example in nodejs directory manually sign and verify JWT one by one, so you can see how JWT
+    work throughly. Modules used for the example are just Built-in module crypto, fs, 
+    and npm module, base64url
+    * The example shows two ways. One is manual way and the other is using convinient functions 
+    offered by crypto module
+
+* jsonwebtoken
+
+    * This example abtract all necessary process for signing and verifying
+    
+
