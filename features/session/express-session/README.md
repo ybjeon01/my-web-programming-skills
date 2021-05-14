@@ -2,19 +2,17 @@
 
 When a client access the site first time, index page returned by server says 'hello, anonymous'. but if you send your name to server, it remembers your name in session, and when you revisit the site while the session is valid, it says 'hello, `<your name>`'
 
+# Tutorial
+
+https://www.youtube.com/watch?v=F-sFp_AvHc8&t=8144s
+
+above tutorial is about how to implement authentication system. Watch express-session part
+
 # References
 
-* https://www.npmjs.com/package/express-session
+* express-session library: https://www.npmjs.com/package/express-session
+* server side rendering template engine library - ejs: https://ejs.co/
 
-# requisite knowledge
-
-* server-side rendering
-
-    * ejs library
-
-* post request params
-
-    * express.urlencoded() middleware
 
 # How to install
     # go to express-session directory
