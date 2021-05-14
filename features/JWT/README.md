@@ -32,6 +32,24 @@ in standard but you can add any key and values
 
     * https://stackoverflow.com/questions/55389211/string-based-data-encoding-base64-vs-base64url
 
+* 100% Stateless with JWT (JSON Web Token) by Hubert Sablonnière
+
+    * https://www.youtube.com/watch?v=67mezK3NzpU
+
+* Authentication: JWT usage vs server-side session
+
+    * https://stackoverflow.com/questions/43452896/authentication-jwt-usage-vs-session
+
+* Stop using JWT for sessions
+
+    * http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/
+
+* Store Auth-Token in Cookie or Header?
+
+    * https://security.stackexchange.com/questions/180357/store-auth-token-in-cookie-or-header
+
+    * https://stackoverflow.com/questions/17000835/token-authentication-vs-cookies
+
 # examples
 
 * nodejs
