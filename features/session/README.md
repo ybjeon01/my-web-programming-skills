@@ -24,6 +24,20 @@ The solution is to store that data server side, give it an "id", and let the cli
 
 Session is a temporary and interactive information interchange between two or more communicating devices. This is just a concept. You can use in-memory storage, database, or even file to implement session.
 
+# References
+
+* Cross-site request forgery (CSRF)
+
+    * https://portswigger.net/web-security/csrf
+
+* CSRF tokens
+
+    * https://portswigger.net/web-security/csrf/tokens
+
+* https://portswigger.net/web-security/csrf/samesite-cookies
+
+    * https://portswigger.net/web-security/csrf/samesite-cookies
+
 # examples
 
 * express-session
